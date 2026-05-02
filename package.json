@@ -3,6 +3,10 @@
   "version": "0.0.1-alpha.0",
   "description": "minimal react + scss ui kit. solarized palette, monospace, cmd+d theme toggle.",
   "author": "Nate Giraudeau",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nategiraudeau/ledgerui.git"
+  },
   "license": "MIT",
   "type": "module",
   "sideEffects": [
