@@ -1,8 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { ThemeProvider } from "ledgerui";
+import { ThemeProvider } from "@nategiraudeau/ledgerui";
 import App from "./App";
-import "ledgerui/styles.css";
+import "@nategiraudeau/ledgerui/styles.css";
 import "./styles.scss";
 
 createRoot(document.getElementById("root")!).render(

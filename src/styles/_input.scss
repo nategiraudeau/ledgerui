@@ -3,7 +3,7 @@
   margin: 0;
   padding: 4px 0 2px;
   border: 0;
-  border-bottom: 2px solid var(--lui-hover-bg);
+  border-bottom: 2px solid transparent;
   background: transparent;
   color: inherit;
   font: inherit;
@@ -18,7 +18,11 @@
   }
 
   &:focus {
-    border-bottom-color: var(--lui-fill);
+    outline: 0;
+  }
+
+  &:not(.lui-input--plain):not(.lui-input--box):focus {
+    border-bottom-color: var(--lui-hover-bg);
   }
 
   &:disabled {
@@ -27,10 +31,31 @@
   }
 }
 
-.lui-input--plain {
-  border-bottom: 0;
+.lui-input--plain:focus {
+  border-bottom-color: transparent;
+}
+
+.lui-input--box {
+  padding: 0 0.4rem;
+  min-width: 3.5rem;
+  height: 2rem;
+  min-height: 2rem;
+  border: 1px solid var(--lui-line);
+  border-radius: var(--lui-radius-sharp);
+  font-family: inherit;
+  font-size: 0.75rem;
+  transition: border-color 0.15s ease;
 
   &:focus {
-    border-bottom: 0;
+    outline: none;
+    border-color: var(--lui-fill);
+  }
+}
+
+@media (max-width: 640px) {
+  .lui-input--box {
+    min-width: 3rem;
+    height: 1.7rem;
+    min-height: 1.7rem;
   }
 }

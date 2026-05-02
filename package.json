@@ -1,6 +1,6 @@
 {
-  "name": "ledgerui",
-  "version": "0.0.1",
+  "name": "@nategiraudeau/ledgerui",
+  "version": "0.0.1-alpha.0",
   "description": "minimal react + scss ui kit. solarized palette, monospace, cmd+d theme toggle.",
   "author": "Nate Giraudeau",
   "license": "MIT",
@@ -33,6 +33,9 @@
     "build:js": "tsc --noEmit && vite build",
     "build:css": "sass --no-source-map src/styles/index.scss dist/styles.css",
     "build": "bun run clean && bun run build:js && bun run build:css",
+    "prepublishOnly": "bun run build",
+    "publish:npm": "npm publish --access public",
+    "publish:npm:alpha": "npm publish --access public --tag alpha",
     "dev": "vite build --watch",
     "example": "cd example && bun install && bun run dev",
     "example:build": "cd example && bun install && bun run build"

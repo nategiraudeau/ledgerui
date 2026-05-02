@@ -1,7 +1,7 @@
 # ledgerui
 
 ```bash
-bun add ledgerui
+bun add @nategiraudeau/ledgerui
 ```
 
 ---
@@ -17,9 +17,9 @@ built with bun and vite (all typescript)
 ### install
 
 ```bash
-bun add ledgerui
+bun add @nategiraudeau/ledgerui
 # or
-npm install ledgerui
+npm install @nategiraudeau/ledgerui
 ```
 
 peer deps:
@@ -31,8 +31,8 @@ peer deps:
 ### use
 
 ```tsx
-import { ThemeProvider, Input, useTheme } from "ledgerui";
-import "ledgerui/styles.css";
+import { ThemeProvider, Input, useTheme } from "@nategiraudeau/ledgerui";
+import "@nategiraudeau/ledgerui/styles.css";
 
 function App() {
   const { theme, toggle } = useTheme();
@@ -59,15 +59,15 @@ export default function Root() {
 if you want to override tokens or cherry-pick partials, import the scss sources directly:
 
 ```scss
-@use "ledgerui/scss/tokens";
-@use "ledgerui/scss/reset";
-@use "ledgerui/scss/input";
+@use "@nategiraudeau/ledgerui/scss/tokens";
+@use "@nategiraudeau/ledgerui/scss/reset";
+@use "@nategiraudeau/ledgerui/scss/input";
 ```
 
 or pull everything:
 
 ```scss
-@use "ledgerui/scss";
+@use "@nategiraudeau/ledgerui/scss";
 ```
 
 ## what looks like (for ppl who are blind and can't see)
@@ -82,7 +82,7 @@ or pull everything:
 
     - accent `#2aa198` (solarized cyan)
 
-- design is minimal (transparent backgrounds, borderless inputs, thin underlines)
+- design is minimal (transparent backgrounds; underline hints only while focused; optional boxed inputs)
 
 - light or dark driven by system
 
@@ -92,7 +92,7 @@ or pull everything:
 
 - `ThemeProvider` / `useTheme` - data-theme attr on `:root`, cmd+d toggle, system default, localStorage persistence
 
-- `Input` - borderless underline input (and a `plain` variant)
+- `Input` - underline-on-focus field (like todos edit), optional always-plain, or boxed field (tracker-style)
 
 - `styles.css` - compiled bundle (fonts, palette, reset, all component styles)
 
@@ -115,7 +115,7 @@ all tokens are css vars prefixed `--lui-`. override them on `:root` (or any pare
 ## theme api
 
 ```tsx
-import { ThemeProvider, useTheme } from "ledgerui";
+import { ThemeProvider, useTheme } from "@nategiraudeau/ledgerui";
 
 <ThemeProvider
   defaultPreference="system"   // "light" | "dark" | "system"
@@ -139,10 +139,11 @@ import { ThemeProvider, useTheme } from "ledgerui";
 ## input api
 
 ```tsx
-import { Input } from "ledgerui";
+import { Input } from "@nategiraudeau/ledgerui";
 
-<Input placeholder="..." />                  // underline (default)
-<Input variant="plain" placeholder="..." />  // no underline
+<Input placeholder="..." />                   // faint underline while focused only (default)
+<Input variant="plain" placeholder="..." />   // no underline, even focused
+<Input variant="box" placeholder="..." />     // 1px box, accent border on focus (tracker-style)
 ```
 
 takes all standard `<input>` props. forwards `ref`.

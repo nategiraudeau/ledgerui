@@ -6,7 +6,7 @@ bun install && bun run dev
 
 ---
 
-tiny vite app that imports `ledgerui` locally. used as a playground while building out the library.
+tiny vite app that imports `@nategiraudeau/ledgerui` locally. used as a playground while building out the library.
 
 built with bun and vite (all typescript)
 
@@ -36,9 +36,11 @@ http://localhost:5173
 
 - one page, centered column
 
-- theme controls at top (light / dark / system / toggle)
+- underline + boxed (`tracker`-style) inputs side by side (desktop), stacked below 640px
 
-- the `<Input />` component rendered in both variants (underline + plain)
+- **buttons** row (outline kit style, not wired to theme)
+
+- **theme** is read-only on the page (`current:` / `preference:`); only `cmd + d` changes it (via `ThemeProvider`)
 
 - hitting `cmd + d` (or `ctrl + d`) flips the theme
 
@@ -48,17 +50,17 @@ the example is a separate bun project with a file link in its `package.json`:
 
 ```json
 "dependencies": {
-  "ledgerui": "file:..",
+  "@nategiraudeau/ledgerui": "file:..",
   ...
 }
 ```
 
-so `import { Input } from "ledgerui"` resolves up one level to the library. `bun install` inside `example/` sets up the symlink.
+so `import { Input } from "@nategiraudeau/ledgerui"` resolves up one level to the library. `bun install` inside `example/` sets up the symlink.
 
 the example imports the compiled css:
 
 ```ts
-import "ledgerui/styles.css";
+import "@nategiraudeau/ledgerui/styles.css";
 ```
 
 so you need to build the lib first (`bun run build` from the repo root) before the css import resolves. after that, `bun run dev` in the example picks up lib js changes directly via the symlink, but css changes require re-running `bun run build:css` at the root.

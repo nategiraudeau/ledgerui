@@ -1,7 +1,7 @@
 import { forwardRef, type InputHTMLAttributes } from "react";
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
-  variant?: "underline" | "plain";
+  variant?: "underline" | "plain" | "box";
 };
 
 const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
@@ -10,6 +10,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
 ) {
   const classes = ["lui-input"];
   if (variant === "plain") classes.push("lui-input--plain");
+  if (variant === "box") classes.push("lui-input--box");
   if (className) classes.push(className);
 
   return <input ref={ref} className={classes.join(" ")} {...rest} />;

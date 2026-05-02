@@ -30,7 +30,7 @@ built with bun and vite (all typescript)
 
 - `ThemeProvider` + `useTheme`
 
-- `Input` (two variants)
+- `Input` (`underline` | `plain` | `box`)
 
 - tokens + reset
 
@@ -46,7 +46,7 @@ js and css build independently, composed in `package.json` scripts:
 
 - `sass src/styles/index.scss dist/styles.css` - css bundle
 
-the js barrel does not import scss. consumers opt in with `import "ledgerui/styles.css"` (same shape as `dailytracker` / `natestodos`).
+the js barrel does not import scss. consumers opt in with `import "@nategiraudeau/ledgerui/styles.css"` (same shape as `dailytracker` / `natestodos`).
 
 ## project structure
 
@@ -109,7 +109,7 @@ raw `src/styles/**/*.scss` ships in the package too (see `files`).
 
     - `./scss` - `./src/styles/index.scss`
 
-    - `./scss/*` - raw partials, e.g. `ledgerui/scss/_tokens.scss`
+    - `./scss/*` - raw partials, e.g. `@nategiraudeau/ledgerui/scss/_tokens.scss`
 
 - `files`: `dist`, `src/styles`
 
