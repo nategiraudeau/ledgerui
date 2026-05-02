@@ -8,7 +8,7 @@ bun add ledgerui
 
 minimal react + scss ui kit
 
-just the bare framework: palette, font, reset, theme toggle, and a starter input. more components get added as needed.
+solarized palette, monospace type, cmd+d light/dark toggle, and a handful of components.
 
 built with bun and vite (all typescript)
 
@@ -18,6 +18,8 @@ built with bun and vite (all typescript)
 
 ```bash
 bun add ledgerui
+# or
+npm install ledgerui
 ```
 
 peer deps:
@@ -96,7 +98,7 @@ or pull everything:
 
 - `scss/*` - raw scss partials if you want to compose your own bundle
 
-### css variables
+## css variables
 
 all tokens are css vars prefixed `--lui-`. override them on `:root` (or any parent) to theme:
 
@@ -134,43 +136,16 @@ import { ThemeProvider, useTheme } from "ledgerui";
 
 - `toggle()` - flip light/dark (sets an explicit preference)
 
-## what its built with
+## input api
 
-- `react` `^19` (peer dep, also supports `^18`)
+```tsx
+import { Input } from "ledgerui";
 
-- `typescript`
-
-- `scss` (dart-sass)
-
-- `vite` in library mode (es + cjs)
-
-- `vite-plugin-dts` for `.d.ts`
-
-## project structure
-
-```
-src/
-  index.ts              barrel export
-  ThemeProvider.tsx     theme context + keyboard toggle
-  useTheme.ts           hook
-  Input.tsx             <Input /> component
-  types.ts              shared types
-  styles/
-    index.scss          entry (used all)
-    _tokens.scss        css vars, font import
-    _reset.scss         box-sizing + body defaults
-    _input.scss         .lui-input styles
-example/                tiny vite app using the lib via file: link
+<Input placeholder="..." />                  // underline (default)
+<Input variant="plain" placeholder="..." />  // no underline
 ```
 
-## build + dev
-
-```bash
-bun install
-bun run build          # outputs dist/index.js, dist/index.cjs, dist/index.d.ts, dist/styles.css
-bun run dev            # vite build --watch
-bun run example        # runs the example vite app
-```
+takes all standard `<input>` props. forwards `ref`.
 
 ## license
 
