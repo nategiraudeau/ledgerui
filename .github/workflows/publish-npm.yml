@@ -1,5 +1,8 @@
 name: Publish to npm
 
+# Trusted publishing (OIDC): configure this exact filename on npmjs.com → package → Access → Trusted Publisher.
+# Requires GitHub-hosted runners (not self-hosted). No NPM_TOKEN secret.
+
 on:
   workflow_dispatch:
     inputs:
@@ -14,6 +17,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write # required for npm trusted publishing / OIDC
 
 jobs:
   publish:
@@ -27,15 +31,18 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          # Trusted publishing requires Node >= 22.14 (npm docs).
+          node-version: "22"
           registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      # Trusted publishing requires npm CLI >= 11.5.1 (npm docs).
+      - name: Upgrade npm for OIDC / trusted publishing
+        run: npm install -g npm@^11.5.1
+
       - name: Publish package
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           set -euo pipefail
           OVERRIDE_TAG="${{ inputs.dist_tag }}"
