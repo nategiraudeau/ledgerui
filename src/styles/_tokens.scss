@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@400;500;700&display=swap");
+
+:root,
+:root[data-theme="light"] {
+  --lui-bg: #fdf6e3;
+  --lui-fg: #586e75;
+  --lui-muted: #93a1a1;
+  --lui-line: #93a1a1;
+  --lui-stroke: #657b83;
+  --lui-fill: #2aa198;
+  --lui-accent: #2aa198;
+  --lui-on: #859900;
+  --lui-drag-shadow: rgba(253, 246, 227, 0.6);
+  --lui-hover-bg: color-mix(in srgb, #2aa198 12%, transparent);
+  --lui-focus-ring: color-mix(in srgb, #2aa198 40%, transparent);
+
+  --lui-font-mono: "Google Sans Code", ui-monospace, SFMono-Regular, "SF Mono",
+    Menlo, Consolas, monospace;
+  --lui-radius-sharp: 0;
+  --lui-radius-round: 999px;
+}
+
+:root[data-theme="dark"] {
+  --lui-bg: #002b36;
+  --lui-fg: #93a1a1;
+  --lui-muted: #586e75;
+  --lui-line: #586e75;
+  --lui-stroke: #839496;
+  --lui-fill: #2aa198;
+  --lui-accent: #2aa198;
+  --lui-on: #859900;
+  --lui-drag-shadow: rgba(0, 43, 54, 0.6);
+  --lui-hover-bg: color-mix(in srgb, #2aa198 18%, transparent);
+  --lui-focus-ring: color-mix(in srgb, #2aa198 55%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --lui-bg: #002b36;
+    --lui-fg: #93a1a1;
+    --lui-muted: #586e75;
+    --lui-line: #586e75;
+    --lui-stroke: #839496;
+    --lui-fill: #2aa198;
+    --lui-accent: #2aa198;
+    --lui-on: #859900;
+    --lui-drag-shadow: rgba(0, 43, 54, 0.6);
+    --lui-hover-bg: color-mix(in srgb, #2aa198 18%, transparent);
+    --lui-focus-ring: color-mix(in srgb, #2aa198 55%, transparent);
+  }
+}

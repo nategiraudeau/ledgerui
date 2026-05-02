@@ -1,0 +1,36 @@
+.lui-input {
+  width: 100%;
+  margin: 0;
+  padding: 4px 0 2px;
+  border: 0;
+  border-bottom: 2px solid var(--lui-hover-bg);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  outline: 0;
+  caret-color: var(--lui-fill);
+  transition: border-color 0.15s ease;
+
+  &::placeholder {
+    color: var(--lui-muted);
+    opacity: 0.7;
+  }
+
+  &:focus {
+    border-bottom-color: var(--lui-fill);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.lui-input--plain {
+  border-bottom: 0;
+
+  &:focus {
+    border-bottom: 0;
+  }
+}
